@@ -1,5 +1,5 @@
 TestCase ( "Test" , {
-"test method" : function(){
+"test method" : function(){ 
 	assert(true);
-}
-}) ;
+	}
+});
