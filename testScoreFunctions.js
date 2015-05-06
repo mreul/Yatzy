@@ -261,7 +261,7 @@ TestCase ( "Test for checkLargeStraight" , {
 		
 		//no large straight
 		testFreqs = [1,1,1,1,0,1];
-		assertEquals(30,checkSixes(testFreqs));
+		assertEquals(0,checkLargeStraight(testFreqs));
 		
 		testFreqs = [1,0,1,1,1,1];
 		assertEquals(0,checkLargeStraight(testFreqs));
@@ -298,7 +298,7 @@ TestCase ( "Test for checkChance" , {
 		testFreqs = [1,0,3,1,0,0];
 		assertEquals(14,checkChance(testFreqs));
 		
-		testFreqs = [0,0,0,0,2,4];
+		testFreqs = [0,0,0,0,2,3];
 		assertEquals(28,checkChance(testFreqs));
 		}
 	});
