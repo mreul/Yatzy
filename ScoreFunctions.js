@@ -8,6 +8,17 @@ function countNumbers(number, array){
 	return result;
 }
 
+function createFreqs(array){
+	var newArray = [];
+	newArray[0] = countNumbers(1,array);
+	newArray[1] = countNumbers(2,array);
+	newArray[2] = countNumbers(3,array);
+	newArray[3] = countNumbers(4,array);
+	newArray[4] = countNumbers(5,array);
+	newArray[5] = countNumbers(6,array);
+	return newArray;
+}
+
 function checkOnes(array){
 	 return array[0];
 }
