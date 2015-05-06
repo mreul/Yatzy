@@ -27,6 +27,26 @@ TestCase ( "Test for countNumbers" , {
 	}
 });
 
+TestCase ( "Test for createFreqs" , {
+	"test should create an array with the frequency of each number" : function(){ 
+		
+		testDices = [1,5,3,5,6];
+		assertEquals([1,0,1,0,2,1],createFreqs(testDices));
+		
+		testDices = [2,3,3,3,2];
+		assertEquals([0,2,3,0,0,0],createFreqs(testDices));
+		
+		testDices = [5,6,6,6,6];
+		assertEquals([0,0,0,0,1,4],createFreqs(testDices));
+		
+		testDices = [2,2,2,2,2];
+		assertEquals([0,5,0,0,0,0],createFreqs(testDices));
+		
+		testDices = [3,2,5,4,1];
+		assertEquals([1,1,1,1,1,0],createFreqs(testDices));
+		}
+	});
+
 TestCase ( "Test for checkOnes" , {
 	"test should return the score reached with ones" : function(){ 
 		
