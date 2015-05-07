@@ -115,3 +115,16 @@ function checkYatzy(array){
 	}
 	return 0;
 }
+
+function checkBonus(sum){
+	return sum>=63 ? 35:0;
+}
+
+function calcSum(array){
+	var sum = 0;
+	for(i=0;i<array.length;++i)
+	{
+		sum += array[i];
+	}
+	return sum;
+}

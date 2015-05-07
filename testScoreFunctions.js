@@ -367,15 +367,40 @@ TestCase ( "Test for checkBonus" , {
 		}
 	});
 
+TestCase ( "Test for calcYatzyBonus" , {
+	"test should return the bonus for all additional Yatzies" : function(){ 
+		//one Yatzy
+		assertEquals(50,calcYatzyBonus([5,2,6,16,20,18]));
+		assertEquals(50,calcYatzyBonus([3,10,6,16,20,18]));
+		assertEquals(50,calcYatzyBonus([3,2,15,16,20,18,]));
+		assertEquals(50,calcYatzyBonus([3,2,6,20,20,18]));
+		assertEquals(50,calcYatzyBonus([3,2,6,16,25,18]));
+		assertEquals(50,calcYatzyBonus([3,2,6,16,20,30]));
+		
+		//Two Yatzies
+		assertEquals(100,calcYatzyBonus([5,10,6,16,20,18]));
+		assertEquals(100,calcYatzyBonus([3,10,6,16,25,18]));
+		assertEquals(100,calcYatzyBonus([3,10,15,8,20,30,]));
+		
+		//Three Yatzies
+		assertEquals(150,calcYatzyBonus([5,10,6,16,20,30]));
+		assertEquals(150,calcYatzyBonus([3,10,6,16,25,18]));
+		assertEquals(150,calcYatzyBonus([3,10,15,16,20,30]));
+		
+		//Four and more Yatzies
+		assertEquals(200,calcYatzyBonus([5,10,15,16,20,30]));
+		assertEquals(250,calcYatzyBonus([5,10,15,16,25,18]));
+		assertEquals(300,calcYatzyBonus([5,10,15,20,25,30]));
+		}
+	});
+
 TestCase ( "Test for calcSum" , {
 	"test should return the sum of all array elements" : function(){ 
 	
-		assertEquals(14,(calcSum[1,3,4,6]));
+		assertEquals(14,calcSum([1,3,4,6]));
 		assertEquals(2,calcSum([2]));
 		assertEquals(3,calcSum([2,-2,3,0,0]));
 		assertEquals(20,calcSum([2,2,2,2,2,2,2,2,2,2]));
 		assertEquals(551,calcSum([430,120,1]));
 		}
 	});
-
-
