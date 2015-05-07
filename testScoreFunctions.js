@@ -350,3 +350,32 @@ TestCase ( "Test for checkYatzy" , {
 		assertEquals(0,checkYatzy(testFreqs));
 		}
 	});
+
+TestCase ( "Test for checkBonus" , {
+	"test should return the achieved bonus" : function(){ 
+		
+		//Bonus not achieved
+		assertEquals(0,checkBonus(-2));
+		assertEquals(0,checkBonus(2));
+		assertEquals(0,checkBonus(10));
+		assertEquals(0,checkBonus(62));
+		
+		//Bonus achieved
+		assertEquals(35,checkBonus(63));
+		assertEquals(35,checkBonus(79));
+		assertEquals(35,checkBonus(100));
+		}
+	});
+
+TestCase ( "Test for calcSum" , {
+	"test should return the sum of all array elements" : function(){ 
+	
+		assertEquals(14,(calcSum[1,3,4,6]));
+		assertEquals(2,calcSum([2]));
+		assertEquals(3,calcSum([2,-2,3,0,0]));
+		assertEquals(20,calcSum([2,2,2,2,2,2,2,2,2,2]));
+		assertEquals(551,calcSum([430,120,1]));
+		}
+	});
+
+
