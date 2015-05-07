@@ -367,30 +367,37 @@ TestCase ( "Test for checkBonus" , {
 		}
 	});
 
-TestCase ( "Test for calcYatzyBonus" , {
+TestCase ( "Test for checkYatzyBonus" , {
 	"test should return the bonus for all additional Yatzies" : function(){ 
 		//one Yatzy
-		assertEquals(50,calcYatzyBonus([5,2,6,16,20,18]));
-		assertEquals(50,calcYatzyBonus([3,10,6,16,20,18]));
-		assertEquals(50,calcYatzyBonus([3,2,15,16,20,18,]));
-		assertEquals(50,calcYatzyBonus([3,2,6,20,20,18]));
-		assertEquals(50,calcYatzyBonus([3,2,6,16,25,18]));
-		assertEquals(50,calcYatzyBonus([3,2,6,16,20,30]));
+		assertEquals(50,checkYatzyBonus([5,2,6,16,20,18]));
+		assertEquals(50,checkYatzyBonus([3,10,6,16,20,18]));
+		assertEquals(50,checkYatzyBonus([3,2,15,16,20,18,]));
+		assertEquals(50,checkYatzyBonus([3,2,6,20,20,18]));
+		assertEquals(50,checkYatzyBonus([3,2,6,16,25,18]));
+		assertEquals(50,checkYatzyBonus([3,2,6,16,20,30]));
 		
 		//Two Yatzies
-		assertEquals(100,calcYatzyBonus([5,10,6,16,20,18]));
-		assertEquals(100,calcYatzyBonus([3,10,6,16,25,18]));
-		assertEquals(100,calcYatzyBonus([3,10,15,8,20,30,]));
+		assertEquals(100,checkYatzyBonus([5,10,6,16,20,18]));
+		assertEquals(100,checkYatzyBonus([3,10,6,16,25,18]));
+		assertEquals(100,checkYatzyBonus([3,10,9,8,20,30,]));
 		
 		//Three Yatzies
-		assertEquals(150,calcYatzyBonus([5,10,6,16,20,30]));
-		assertEquals(150,calcYatzyBonus([3,10,6,16,25,18]));
-		assertEquals(150,calcYatzyBonus([3,10,15,16,20,30]));
+		assertEquals(150,checkYatzyBonus([5,10,6,16,20,30]));
+		assertEquals(150,checkYatzyBonus([3,10,6,20,25,18]));
+		assertEquals(150,checkYatzyBonus([3,10,15,16,20,30]));
 		
 		//Four and more Yatzies
-		assertEquals(200,calcYatzyBonus([5,10,15,16,20,30]));
-		assertEquals(250,calcYatzyBonus([5,10,15,16,25,18]));
-		assertEquals(300,calcYatzyBonus([5,10,15,20,25,30]));
+		assertEquals(200,checkYatzyBonus([5,10,15,16,20,30]));
+		assertEquals(250,checkYatzyBonus([5,10,15,20,25,18]));
+		assertEquals(300,checkYatzyBonus([5,10,15,20,25,30]));
+		
+		//No Yatzy and error cases
+		assertEquals(0,checkYatzyBonus([3,8,9,16,20,24]));
+		assertEquals(0,checkYatzyBonus([1,0,3,16,15,24]));
+		assertEquals(0,checkYatzyBonus([2,10]));
+		assertEquals(0,checkYatzyBonus([0,0,0,0,0]));
+		assertEquals(0,checkYatzyBonus([]))
 		}
 	});
 

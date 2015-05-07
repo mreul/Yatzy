@@ -120,6 +120,18 @@ function checkBonus(sum){
 	return sum>=63 ? 35:0;
 }
 
+function checkYatzyBonus(array){
+	var bonus = 0;
+	if(array.length<6)
+		return bonus;
+	for(i=0;i<6;++i)
+	{
+		if(array[i]==5*(i+1))
+			bonus += 50;
+	}
+	return bonus;
+}
+
 function calcSum(array){
 	var sum = 0;
 	for(i=0;i<array.length;++i)
