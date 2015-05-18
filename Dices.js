@@ -22,3 +22,8 @@ function holdDice(number, holdArray)
 {
 	holdArray[number] = 1;
 }
+
+function resetTurns()
+{
+	turns = 0;
+}
