@@ -16,7 +16,22 @@ TestCase ( "Test for rollDices" , {
 		assertEquals(5, testDiceArray.length);
 		for(i = 0;i<5;i++)
 		assertEquals(0, testDiceArray[i]%1);
-		}
+		},
+	"test should check that dices can be rolled only three times " : function(){ 
+	
+		var testDiceArray = [];
+		var testHoldArray = [0,0,0,0,0];
+		rollDices(testDiceArray, testHoldArray);
+		assertFalse(testHoldArray==[]);
+		rollDices(testDiceArray, testHoldArray);
+		rollDices(testDiceArray, testHoldArray); //rolled the dices three times
+		
+		testDiceArray = [1,2,3,4,5]; //fictive dice results
+		rollDices(testDiceArray, testHoldArray); //rolling the dices a fourth time
+		assertEquals([1,2,3,4,5], testDiceArray); //dices should remain unchanged
+		rollDices(testDiceArray, testHoldArray); // checking again
+		assertEquals([1,2,3,4,5], testDiceArray);
+	}
 	});
 
 TestCase ( "Test for holdDice" , {
