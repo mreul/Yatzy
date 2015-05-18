@@ -1,3 +1,5 @@
+var turns = 0;
+
 function rollDice()
 {
 	return 1 + Math.floor(Math.random() * 6);
@@ -5,10 +7,14 @@ function rollDice()
 
 function rollDices(diceArray, holdArray)
 {
-	for(i=0;i<5;++i)
+	if(turns < 3)
 	{
-		if(holdArray[i]!=1)
-			diceArray[i] = rollDice();
+		for(i=0;i<5;++i)
+		{
+			if(holdArray[i]!=1)
+				diceArray[i] = rollDice();
+		}
+		turns++;
 	}
 }
 
