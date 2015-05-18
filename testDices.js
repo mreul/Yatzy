@@ -1,7 +1,7 @@
 TestCase ( "Test for rollDice" , {
 	"test should check if an integer between 1 and 6 is created " : function(){ 
 		
-		assertEquals(0, rollDice()%10);
+		assertEquals(0, rollDice()%1);
 		assertTrue(rollDice()<7);
 		assertTrue(rollDice()>0);
 		}
@@ -15,7 +15,7 @@ TestCase ( "Test for rollDices" , {
 		rollDices(testDiceArray, testHoldArray);
 		assertEquals(5, testDiceArray.length);
 		for(i = 0;i<5;i++)
-		assertInteger(testDiceArray[i]);
+		assertEquals(0, testDiceArray[i]%1);
 		}
 	});
 
