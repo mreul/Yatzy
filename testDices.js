@@ -17,7 +17,7 @@ TestCase ( "Test for rollDices" , {
 		for(i = 0;i<5;i++)
 		assertEquals(0, testDiceArray[i]%1);
 		},
-	"test should check that dices can be rolled only three times " : function(){ 
+	"test should check that dices can be rolled only three times until reset" : function(){ 
 	
 		var testDiceArray = [];
 		var testHoldArray = [0,0,0,0,0];
@@ -31,6 +31,11 @@ TestCase ( "Test for rollDices" , {
 		assertEquals([1,2,3,4,5], testDiceArray); //dices should remain unchanged
 		rollDices(testDiceArray, testHoldArray); // checking again
 		assertEquals([1,2,3,4,5], testDiceArray);
+		
+		testDiceArray = [];
+		resetTurns();
+		rollDices(testDiceArray, testHoldArray);
+		assertFalse(testHoldArray==[]);
 	}
 	});
 
