@@ -29,7 +29,7 @@ TestCase ( "Test for rollDices" , {
 		testDiceArray = [1,2,3,4,5]; //fictive dice results
 		rollDices(testDiceArray, testHoldArray); //rolling the dices a fourth time
 		assertEquals([1,2,3,4,5], testDiceArray); //dices should remain unchanged
-		rollDices(testDiceArray, testHoldArray); // checking again
+		rollDices(testDiceArray, testHoldArray); 
 		assertEquals([1,2,3,4,5], testDiceArray);
 		
 		testDiceArray = [];
