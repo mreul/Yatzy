@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <title>Yatzy Socket Test</title>      
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+      var socket = io.connect('http://127.0.0.1:8124');
+      socket.on('diceThrow', function (data) {
+      alert('Wurf: ' + data);
+      });
+      function wuerfeln()
+      {
+    	  socket.emit('wuerfeln', "");
+      }
+      </script>
+    </head>
+     
+    <body>
+    <button onclick = "wuerfeln();">Wurf</button>
+    </body>
+     
+    </html>
