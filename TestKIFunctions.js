@@ -202,14 +202,16 @@ TestCase ( "Test for tryMoreOfAKind" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,5,1,5];
-		tryMoreOfAKind(testDices,testHoldDices);
+		testFreqs = createFreqs(testDices);
+		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [0,0,1,0,1]);},
 		
 	"test should check if the largest number is fixed if every number occurs once " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,3,6,2];
-		tryMoreOfAKind(testDices,testHoldDices);
+		testFreqs = createFreqs(testDices);
+		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [0,0,0,1,0]);
 		},
 	
@@ -217,15 +219,83 @@ TestCase ( "Test for tryMoreOfAKind" , {
 			
 		testHoldDices = [1,0,0,1,0];
 		testDices = [4,6,6,4,6];
-		tryMoreOfAKind(testDices,testHoldDices);
+		testFreqs = createFreqs(testDices);
+		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [0,1,1,0,1]);
 		},
+		
 	"test should check if numbers occurring four times are fixed" : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [4,6,6,6,6];
-		tryMoreOfAKind(testDices,testHoldDices);
+		testFreqs = createFreqs(testDices);
+		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [0,1,1,1,1]);
 		},
 	});
 
+TestCase ( "Test for tryFullHouse" , {
+	"test should check if numbers occurring twice are fixed " : function(){ 
+		
+		testHoldDices = [0,0,0,0,0];
+		testDices = [1,2,5,1,5];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [0,0,1,0,1]);},
+		
+	"test should check if the numbers occurring three times and one additional are fixed " : function(){ 
+		
+		testHoldDices = [0,0,0,0,0];
+		testDices = [3,3,3,6,2];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [1,1,1,1,0]);
+		},
+	
+	"test should check if a full house is fixed" : function(){ 
+			
+		testHoldDices = [1,0,0,1,0];
+		testDices = [2,2,3,2,3];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [1,1,1,1,1]);
+		},
+	});
+
+//applies for both small and large straight
+TestCase ( "Test for tryStraight" , {
+	"test should check if a number sequence of two is fixed " : function(){ 
+		
+		testHoldDices = [0,0,0,0,0];
+		testDices = [1,4,5,1,5];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [0,01,1,0,0]);},
+		
+	"test should check if a number sequence of three is fixed " : function(){ 
+		
+		testHoldDices = [0,0,0,0,0];
+		testDices = [4,3,3,6,2];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [1,1,0,0,1]);
+		},
+	
+	"test should check if a number sequence of four is fixed " : function(){ 
+			
+		testHoldDices = [1,0,0,1,0];
+		testDices = [4,2,3,1,3];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [1,1,1,1,0]);
+		},
+		
+	"test should check if one of two identical fixed numbers is released " : function(){ 
+			
+		testHoldDices = [1,1,0,0,0];
+		testDices = [4,4,1,1,3];
+		testFreqs = createFreqs(testDices);
+		tryFullHouse(testDices,testFreqs, testHoldDices);
+		assertEquals(testHoldDices, [0,0,0,0,0]);
+		},	
+	});
