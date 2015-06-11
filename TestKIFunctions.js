@@ -22,6 +22,7 @@ TestCase ( "Test for tryOnes" , {
 		tryOnes(testDices,testHoldDices);
 		assertEquals(testHoldDices, [1,0,1,1,0]);
 		},
+		
 	"test should check if fixed numbers don't remain if they are no one " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
@@ -296,7 +297,7 @@ TestCase ( "Test for tryStraight" , {
 		testDices = [4,4,1,1,3];
 		testFreqs = createFreqs(testDices);
 		tryStraight(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(testHoldDices, [1,0,0,0,0]);
 		},	
 	});
 
