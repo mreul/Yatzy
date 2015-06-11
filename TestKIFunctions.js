@@ -196,7 +196,7 @@ TestCase ( "Test for trySixes" , {
 		}
 	});
 
-//This case comprises three and four of a kind
+//This case comprises three and four of a kind and Yatzy
 TestCase ( "Test for tryMoreOfAKind" , {
 	"test should check if the largest numbers occurring twice are fixed " : function(){ 
 		
@@ -269,7 +269,7 @@ TestCase ( "Test for tryStraight" , {
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,4,5,1,5];
 		testFreqs = createFreqs(testDices);
-		tryFullHouse(testDices,testFreqs, testHoldDices);
+		tryStraight(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [0,01,1,0,0]);},
 		
 	"test should check if a number sequence of three is fixed " : function(){ 
@@ -277,7 +277,7 @@ TestCase ( "Test for tryStraight" , {
 		testHoldDices = [0,0,0,0,0];
 		testDices = [4,3,3,6,2];
 		testFreqs = createFreqs(testDices);
-		tryFullHouse(testDices,testFreqs, testHoldDices);
+		tryStraight(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [1,1,0,0,1]);
 		},
 	
@@ -286,7 +286,7 @@ TestCase ( "Test for tryStraight" , {
 		testHoldDices = [1,0,0,1,0];
 		testDices = [4,2,3,1,3];
 		testFreqs = createFreqs(testDices);
-		tryFullHouse(testDices,testFreqs, testHoldDices);
+		tryStraight(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [1,1,1,1,0]);
 		},
 		
@@ -295,7 +295,48 @@ TestCase ( "Test for tryStraight" , {
 		testHoldDices = [1,1,0,0,0];
 		testDices = [4,4,1,1,3];
 		testFreqs = createFreqs(testDices);
-		tryFullHouse(testDices,testFreqs, testHoldDices);
+		tryStraight(testDices,testFreqs, testHoldDices);
 		assertEquals(testHoldDices, [0,0,0,0,0]);
 		},	
+	});
+
+TestCase ( "Test for tryChance" , {
+	"test should check if all fives and sixes are fixed" : function(){ 
+		
+		testHoldDices = [0,0,0,0,0];
+		testDices = [1,4,5,6,5];
+		tryChance(testDices, testHoldDices);
+		assertEquals(testHoldDices, [0,0,1,1,1]);},
+		
+	"test should check if all fours are fixed if no fives and sixes occur " : function(){ 
+		
+		testHoldDices = [0,0,0,0,0];
+		testDices = [4,3,3,4,2];
+		tryChance(testDices, testHoldDices);
+		assertEquals(testHoldDices, [1,0,0,1,0]);
+		},
+	
+	"test should check if nothing is fixed if no numbers greater than three occur " : function(){ 
+			
+		testHoldDices = [0,0,0,0,0];
+		testDices = [1,2,3,1,3];
+		tryChance(testDices, testHoldDices);
+		assertEquals(testHoldDices, [0,0,0,0,0]);
+		},
+		
+	"test should check if small fixed numbers are released " : function(){ 
+			
+		testHoldDices = [1,1,0,0,1];
+		testDices = [3,3,1,1,3];
+		tryChance(testDices, testHoldDices);
+		assertEquals(testHoldDices, [0,0,0,0,0]);
+		},	
+		
+	"test should check if large fixed numbers remain" : function(){ 
+		
+		testHoldDices = [1,1,0,0,1];
+		testDices = [6,6,1,1,6];
+		tryChance(testDices, testHoldDices);
+		assertEquals(testHoldDices, [1,1,0,0,1]);
+		},
 	});
