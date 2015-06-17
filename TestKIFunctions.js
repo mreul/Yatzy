@@ -4,31 +4,27 @@ TestCase ( "Test for tryOnes" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,3,1,3];
-		tryOnes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,0,1,0]);},
+		assertEquals(tryOnes(testDices,testHoldDices), [1,0,0,1,0]);},
 		
 	"test should check if no number is fixed if no one occurs " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [6,2,3,6,3];
-		tryOnes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryOnes(testDices,testHoldDices), [0,0,0,0,0]);
 		},
 	
 	"test should check if fixed numbers remain if they are a one " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [1,2,1,1,3];
-		tryOnes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,1,0]);
+		assertEquals(tryOnes(testDices,testHoldDices), [1,0,1,1,0]);
 		},
 		
 	"test should check if fixed numbers don't remain if they are no one " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [4,2,3,3,3];
-		tryOnes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryOnes(testDices,testHoldDices), [0,0,0,0,0]);
 		}
 	});
 
@@ -37,31 +33,27 @@ TestCase ( "Test for tryTwos" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [2,2,3,1,2];
-		tryTwos(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,1,0,0,1]);},
+		assertEquals(tryTwos(testDices,testHoldDices), [1,1,0,0,1]);},
 		
 	"test should check if no number is fixed if no two occurs " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [6,6,3,6,3];
-		tryTwos(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryTwos(testDices,testHoldDices), [0,0,0,0,0]);
 		},
+		
+	"test should check if fixed numbers don't remain if they are no two " : function(){ 
+		
+		testDices = [4,6,3,3,3];
+		testHoldDices = [1,0,1,1,0];
+		assertEquals(tryTwos(testDices,testHoldDices), [0,0,0,0,0]);
+		},	
 	
 	"test should check if fixed numbers remain if they are a two " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [2,1,2,2,3];
-		tryTwos(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,1,0]);
-		},
-		
-	"test should check if fixed numbers don't remain if they are no two " : function(){ 
-			
-		testHoldDices = [1,0,1,1,0];
-		testDices = [4,6,3,3,3];
-		tryTwos(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryTwos(testDices,testHoldDices), [1,0,1,1,0]);
 		}
 	});
 
@@ -70,31 +62,27 @@ TestCase ( "Test for tryThrees" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [3,3,3,1,3];
-		tryThrees(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,1,1,0,1]);},
+		assertEquals(tryThrees(testDices,testHoldDices), [1,1,1,0,1]);},
 		
 	"test should check if no number is fixed if no one occurs " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [6,2,1,6,1];
-		tryThrees(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryThrees(testDices,testHoldDices), [0,0,0,0,0]);
 		},
 	
 	"test should check if fixed numbers remain if they are a three " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [3,2,3,3,5];
-		tryThrees(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,1,0]);
+		assertEquals(tryThrees(testDices,testHoldDices), [1,0,1,1,0]);
 		},
 		
 	"test should check if fixed numbers don't remain if they are no three " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [4,2,4,5,5];
-		tryThrees(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryThrees(testDices,testHoldDices), [0,0,0,0,0]);
 		}
 	});
 
@@ -103,31 +91,27 @@ TestCase ( "Test for tryFours" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [4,2,4,1,4];
-		tryFours(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,0,1]);},
+		assertEquals(tryFours(testDices,testHoldDices), [1,0,1,0,1]);},
 		
 	"test should check if no number is fixed if no four occurs " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [6,2,3,6,3];
-		tryFours(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryFours(testDices,testHoldDices), [0,0,0,0,0]);
 		},
 	
 	"test should check if fixed numbers remain if they are a four " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [4,2,4,4,3];
-		tryFours(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,1,0]);
+		assertEquals(tryFours(testDices,testHoldDices), [1,0,1,1,0]);
 		},
 		
 	"test should check if fixed numbers don't remain if they are no four " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [1,2,3,3,3];
-		tryFours(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryFours(testDices,testHoldDices), [0,0,0,0,0]);
 		}
 	});
 
@@ -136,31 +120,27 @@ TestCase ( "Test for tryFives" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,5,5,1,3];
-		tryFives(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,1,1,0,0]);},
+		assertEquals(tryFives(testDices,testHoldDices), [0,1,1,0,0]);},
 		
 	"test should check if no number is fixed if no five occurs " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [6,2,3,6,3];
-		tryFives(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryFives(testDices,testHoldDices), [0,0,0,0,0]);
 		},
 	
 	"test should check if fixed numbers remain if they are a five " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [5,2,5,5,3];
-		tryFives(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,1,0]);
+		assertEquals(tryFives(testDices,testHoldDices), [1,0,1,1,0]);
 		},
 		
 	"test should check if fixed numbers don't remain if they are no five " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [4,2,3,3,3];
-		tryFives(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(tryFives(testDices,testHoldDices), [0,0,0,0,0]);
 		}
 	});
 
@@ -169,31 +149,27 @@ TestCase ( "Test for trySixes" , {
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,6,6,6,6];
-		trySixes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,1,1,1,1]);},
+		assertEquals(trySixes(testDices,testHoldDices), [0,1,1,1,1]);},
 		
 	"test should check if no number is fixed if no six occurs " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,3,4,3];
-		trySixes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(trySixes(testDices,testHoldDices), [0,0,0,0,0]);
 		},
 	
 	"test should check if fixed numbers remain if they are a six " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [6,2,6,6,3];
-		trySixes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [1,0,1,1,0]);
+		assertEquals(trySixes(testDices,testHoldDices), [1,0,1,1,0]);
 		},
 		
 	"test should check if fixed numbers don't remain if they are no six " : function(){ 
 			
 		testHoldDices = [1,0,1,1,0];
 		testDices = [4,2,3,3,3];
-		trySixes(testDices,testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,0,0]);
+		assertEquals(trySixes(testDices,testHoldDices), [0,0,0,0,0]);
 		}
 	});
 
@@ -204,16 +180,14 @@ TestCase ( "Test for tryMoreOfAKind" , {
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,5,1,5];
 		testFreqs = createFreqs(testDices);
-		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,0,1,0,1]);},
+		assertEquals(tryMoreOfAKind(testDices,testFreqs, testHoldDices), [0,0,1,0,1]);},
 		
 	"test should check if the largest number is fixed if every number occurs once " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,3,6,2];
 		testFreqs = createFreqs(testDices);
-		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,0,0,1,0]);
+		assertEquals(tryMoreOfAKind(testDices,testFreqs, testHoldDices), [0,0,0,1,0]);
 		},
 	
 	"test should check if numbers occurring three times are preferred " : function(){ 
@@ -221,8 +195,7 @@ TestCase ( "Test for tryMoreOfAKind" , {
 		testHoldDices = [1,0,0,1,0];
 		testDices = [4,6,6,4,6];
 		testFreqs = createFreqs(testDices);
-		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,1,1,0,1]);
+		assertEquals(tryMoreOfAKind(testDices,testFreqs, testHoldDices), [0,1,1,0,1]);
 		},
 		
 	"test should check if numbers occurring four times are fixed" : function(){ 
@@ -230,19 +203,25 @@ TestCase ( "Test for tryMoreOfAKind" , {
 		testHoldDices = [0,0,0,0,0];
 		testDices = [4,6,6,6,6];
 		testFreqs = createFreqs(testDices);
-		tryMoreOfAKind(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,1,1,1,1]);
+		assertEquals(tryMoreOfAKind(testDices,testFreqs, testHoldDices), [0,1,1,1,1]);
+		},
+	"test should check if numbers already occuring twice are left and additional numbers are fixed if necessary" : function(){ 
+		
+		testHoldDices = [0,1,0,0,1];
+		testDices = [4,6,6,3,6];
+		testFreqs = createFreqs(testDices);
+		assertEquals(tryMoreOfAKind(testDices,testFreqs, testHoldDices), [0,1,1,0,1]);
 		},
 	});
 
 TestCase ( "Test for tryFullHouse" , {
-	"test should check if numbers occurring twice are fixed " : function(){ 
+	"test should check if two numbers occurring twice are fixed " : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
 		testDices = [1,2,5,1,5];
 		testFreqs = createFreqs(testDices);
 		tryFullHouse(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,0,1,0,1]);},
+		assertEquals(testHoldDices, [1,0,1,1,1]);},
 		
 	"test should check if the numbers occurring three times and one additional are fixed " : function(){ 
 		
@@ -271,7 +250,7 @@ TestCase ( "Test for tryStraight" , {
 		testDices = [1,4,5,1,5];
 		testFreqs = createFreqs(testDices);
 		tryStraight(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [0,01,1,0,0]);},
+		assertEquals(testHoldDices, [0,1,1,0,0]);},
 		
 	"test should check if a number sequence of three is fixed " : function(){ 
 		
@@ -291,13 +270,13 @@ TestCase ( "Test for tryStraight" , {
 		assertEquals(testHoldDices, [1,1,1,1,0]);
 		},
 		
-	"test should check if one of two identical fixed numbers is released " : function(){ 
+	"test should check if identical fixed numbers are released " : function(){ 
 			
-		testHoldDices = [1,1,0,0,0];
-		testDices = [4,4,1,1,3];
+		testHoldDices = [1,1,0,1,0];
+		testDices = [4,4,1,4,6];
 		testFreqs = createFreqs(testDices);
 		tryStraight(testDices,testFreqs, testHoldDices);
-		assertEquals(testHoldDices, [1,0,0,0,0]);
+		assertEquals(testHoldDices, [0,0,0,0,0]);
 		},	
 	});
 
@@ -305,7 +284,7 @@ TestCase ( "Test for tryChance" , {
 	"test should check if all fives and sixes are fixed" : function(){ 
 		
 		testHoldDices = [0,0,0,0,0];
-		testDices = [1,4,5,6,5];
+		testDices = [1,3,5,6,5];
 		tryChance(testDices, testHoldDices);
 		assertEquals(testHoldDices, [0,0,1,1,1]);},
 		
