@@ -1,5 +1,18 @@
+// called-variables for test purposes only
+	var onesCalled = false;
+	var twosCalled = false;
+	var threesCalled = false;
+	var foursCalled = false;
+	var fivesCalled = false;
+	var sixesCalled = false;
+	var moreCalled = false;
+	var straightCalled = false;
+	var fullHouseCalled = false;
+	var chanceCalled = false;
+	
 function tryOnes(dices, holdDices)
 {
+	onesCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<5;i++)
 	{
@@ -13,6 +26,7 @@ function tryOnes(dices, holdDices)
 
 function tryTwos(dices, holdDices)
 {
+	twosCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<5;i++)
 	{
@@ -26,6 +40,7 @@ function tryTwos(dices, holdDices)
 
 function tryThrees(dices, holdDices)
 {
+	threesCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<5;i++)
 	{
@@ -39,6 +54,7 @@ function tryThrees(dices, holdDices)
 
 function tryFours(dices, holdDices)
 {
+	foursCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<5;i++)
 	{
@@ -52,6 +68,7 @@ function tryFours(dices, holdDices)
 
 function tryFives(dices, holdDices)
 {
+	fivesCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<5;i++)
 	{
@@ -65,6 +82,7 @@ function tryFives(dices, holdDices)
 
 function trySixes(dices, holdDices)
 {
+	sixesCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<5;i++)
 	{
@@ -78,6 +96,7 @@ function trySixes(dices, holdDices)
 
 function tryMoreOfAKind(dices, freqs, holdDices)
 {
+	moreCalled = true;
 	holdDices = [0,0,0,0,0];
 	for(var i = 0;i<6;i++)
 	{
@@ -119,6 +138,7 @@ function tryMoreOfAKind(dices, freqs, holdDices)
 
 function tryFullHouse(dices, freqs, holdDices)
 {
+	fullHouseCalled = true;
 	for(var i = 0;i<6;i++)
 	{
 		//fix numbers occurring three times
@@ -163,6 +183,7 @@ function tryFullHouse(dices, freqs, holdDices)
 
 function tryStraight(dices,freqs, holdDices)
 {
+	straightCalled = true;
 	//release numbers that are already fixed twice or more times
 	for(var k = 0;k<5;k++)
 	{
@@ -206,6 +227,7 @@ function tryStraight(dices,freqs, holdDices)
 
 function tryChance(dices, holdDices)
 {
+	chanceCalled = true;
 	for(var i=0;i<5;i++)
 	{
 		if(dices[i]==6)
@@ -222,4 +244,68 @@ function tryChance(dices, holdDices)
 			holdDices[i]=0;
 	}	
 	return holdDices;
+}
+
+//First and second automatic draw 
+function simpleKiDraw(catFixed, dices, freqs, holdDices)
+{
+	if(catFixed[11]==0||catFixed[6]==0||catFixed[7]==0)
+	{
+		for(var i = 0;i<6;i++)
+		{
+			if(freqs[i]>3)
+			{
+				tryMoreOfAKind(dices, freqs, holdDices);	
+			}
+		}
+	}
+	if(catFixed[10]==0||catFixed[9]==0)
+	{
+		for(var j = 0;j<4;j++)
+		{
+			if(freqs[j]>=1&&freqs[j+1]>=1&&freqs[j+2]>=1)
+			{
+				tryStraight(dices, freqs, holdDices);
+			}	
+		}
+	}
+	if(catFixed[8]==0)
+	{
+		for(var k = 0;k<4;k++)
+		{
+			if(freqs[k]>=2)
+			{
+				tryFullHouse(dices, freqs, holdDices);
+			}	
+		}
+	}
+	if(catFixed[5]==0&&freqs[5]>=2)
+		trySixes(dices,holdDices);
+	if(catFixed[4]==0&&freqs[4]>=2)
+		tryFives(dices,holdDices);
+	if(catFixed[3]==0&&freqs[3]>=2)
+		tryFours(dices,holdDices);
+	if(catFixed[2]==0&&freqs[2]>=2)
+		tryThrees(dices,holdDices);
+	if(catFixed[1]==0&&freqs[1]>=2)
+		tryTwos(dices,holdDices);
+	if(catFixed[0]==0&&freqs[0]>=2)
+		tryOnes(dices,holdDices);
+	
+	tryChance(dices,holdDices);
+}
+//third automatic draw
+function finalKiDraw(points, catFixed)
+{
+	var num = points[0];
+	var pos = 0;
+	for(var i = 0;i<13;i++)
+	{
+		if(points[i]>num&&catFixed[i]==0)
+		{
+			num = points[i];
+			pos = i;
+		}
+	}
+	catFixed[pos] = 1;
 }

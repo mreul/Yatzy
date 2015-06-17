@@ -320,3 +320,156 @@ TestCase ( "Test for tryChance" , {
 		assertEquals(testHoldDices, [1,1,0,0,1]);
 		},
 	});
+
+TestCase ( "Test for simpleKiDraw" , {
+		
+	"test should check if no straight is tried if both are already fixed " : function(){ 
+			
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([3,3,3,3,3]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertFalse(straightCalled);
+		},
+		
+	"test should check no full house is tried if it is already fixed" : function(){ 
+			
+		testCatFixed = [0,0,0,0,0,0,0,0,1,0,0,0,0];
+		testInit([3,3,2,2,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertFalse(fullHouseCalled);
+		},
+		
+	"test should check if more equal numbers are tried" : function(){ 
+				
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([2,5,2,1,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(twosCalled);
+		},
+		
+	"test should check if sixes are tried if at least two occur" : function(){ 
+			
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([6,6,2,1,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(sixesCalled);
+		},
+	
+	"test should check if fives are tried if at least two occur" : function(){ 
+		
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([6,5,5,1,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+	    assertTrue(fivesCalled);
+	    },
+	  
+	  "test should check if fours are tried if at least two occur" : function(){ 
+		
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([6,4,4,4,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(foursCalled);
+	    },
+	    
+	   "test should check if threes are tried if at least two occur" : function(){ 
+		
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([6,3,3,4,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(threesCalled);
+		},
+		
+	"test should check if twos are tried if at least two occur" : function(){ 
+		
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([6,2,3,5,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(twosCalled);
+		},
+	"test should check if ones are tried if at least two occur" : function(){ 
+			
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testInit([6,3,1,1,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(onesCalled);
+		},
+	"test should check if sixes are not tried if they are already fixed" : function(){ 
+			
+		testCatFixed = [0,0,0,0,0,1,0,0,0,0,0,0,0];
+		testInit([6,3,3,6,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertFalse(sixesCalled);
+		},
+	"test should check if fives are not tried if they are already fixed" : function(){ 
+			
+		testCatFixed = [0,0,0,0,1,0,0,0,0,0,0,0,0];
+		testInit([6,3,3,6,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertFalse(fivesCalled);
+		},
+	"test should check if a chance is tried if most other possible categories are already fixed" : function(){ 
+			
+		testCatFixed = [1,1,1,1,1,1,1,1,0,0,0,1,0];
+		testInit([6,3,5,6,2]);
+		simpleKiDraw(testCatFixed, testDices, testFreqs, testHoldDices);
+		assertTrue(chanceCalled);
+		},
+	});
+
+TestCase ( "Test for finalKiDraw" , {
+	"test should check if the field with the largest achieved points is fixed" : function(){ 
+		
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testPoints = [0,0,0,4,0,0,12,0,0,7,7,0,9];
+		finalKiDraw(testPoints, testCatFixed);
+		assertEquals(testCatFixed, [0,0,0,0,0,0,1,0,0,0,0,0,0]);
+		},
+		
+	"test should check if the largest number at the end of the array is fixed " : function(){ 
+		
+		testPoints = [0,0,0,4,0,0,12,0,0,7,7,0,13];
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		finalKiDraw(testPoints, testCatFixed);
+		assertEquals(testCatFixed, [0,0,0,0,0,0,0,0,0,0,0,0,1]);
+		},
+	
+	"test should check if the largest number at the beginning of the array is fixed " : function(){ 
+			
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testPoints = [20,0,0,4,0,0,12,0,0,7,7,0,13];
+		finalKiDraw(testPoints, testCatFixed);
+		assertEquals(testCatFixed, [1,0,0,0,0,0,0,0,0,0,0,0,0]);
+		},
+		
+	"test should check that only one category is fixed if largest number occurs more than once" : function(){ 
+		
+		testCatFixed = [0,0,0,0,0,0,0,0,0,0,0,0,0];
+		testPoints = [4,0,0,4,0,7,20,20,0,7,7,0,13];
+		finalKiDraw(testPoints, testCatFixed);
+		assertEquals(testCatFixed, [0,0,0,0,0,0,1,0,0,0,0,0,0]);
+		},
+		
+	"test should check that fixed categories remain fixed plus one additional" : function(){ 
+		
+		testCatFixed = [1,1,1,0,0,0,0,0,0,0,0,1,0];
+		testPoints = [4,0,0,4,0,7,25,20,0,7,7,0,13];
+		finalKiDraw(testPoints, testCatFixed);
+		assertEquals(testCatFixed, [1,1,1,0,0,0,1,0,0,0,0,1,0]);
+		},
+	});
+
+function testInit(testDices)
+{
+	onesCalled = false;
+	twosCalled = false;
+	threesCalled = false;
+	foursCalled = false;
+	fivesCalled = false;
+	sixesCalled = false;
+	moreCalled = false;
+	straightCalled = false;
+	fullHouseCalled = false;
+	chanceCalled = false;
+	testHoldDices = [0,0,0,0,0];
+	testFreqs = createFreqs(testDices);
+}
