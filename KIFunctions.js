@@ -246,7 +246,7 @@ function tryChance(dices, holdDices)
 	return holdDices;
 }
 
-//First and second automatic draw 
+//First three automatic draws 
 function simpleKiDraw(catFixed, dices, freqs, holdDices)
 {
 	if(catFixed[11]==0||catFixed[6]==0||catFixed[7]==0)
@@ -294,7 +294,7 @@ function simpleKiDraw(catFixed, dices, freqs, holdDices)
 	
 	tryChance(dices,holdDices);
 }
-//third automatic draw
+//final automatic draw
 function finalKiDraw(points, catFixed)
 {
 	var num = points[0];
