@@ -1,4 +1,4 @@
-/*TestCase ( "Test for serveStaticIndex" , {
+TestCase ( "Test for serveStaticIndex" , {
 	"test should check that the correct start page is loaded" : function(){ 
 		var req = {url:"/"};
 		var res = {};
@@ -26,13 +26,13 @@
 		serveStaticIndex(req,res);
 		assertEquals(script,fs.readFileSync("/home/student/workspace/Yatzy/Client/index2v2.html", "utf8"));
 		},	
-	});*/
+	});
 
 TestCase ( "Test for socket.on('join1v1')" , {
 	"test should check if all parameters for 1v1 are set correctly" : function(){ 
-		//initSocket();
-		//io.sockets.clients = [1];
-		//socket.emit("1v1");
+		initSocket();
+		io.sockets.clients = [1];
+		socket.emit("1v1");
 		assertEquals(0, socket.würfe);
 		assertEquals(0, socket.zug);
 		assertEquals(19, socket.points.length);
@@ -43,7 +43,7 @@ TestCase ( "Test for socket.on('join1v1')" , {
 		assertFalse(socket.plays);
 		}
 	});
-/*
+
 TestCase ( "Test for socket.on('join2v2')" , {
 	"test should check if all parameters for 2v2 are set correctly" : function(){ 
 		initSocket();
@@ -247,7 +247,7 @@ TestCase ( "Test for calcTeamPoints)" , {
 		assertEquals(360, calcTeamPoints());	
 		},
 	});
-*/
+
 function initSocket()
 {
 	var socket = io.connect('http://127.0.0.1:8124');
