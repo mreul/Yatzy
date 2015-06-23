@@ -1,5 +1,4 @@
-
-TestCase ( "Test for serveStaticIndex" , {
+/*TestCase ( "Test for serveStaticIndex" , {
 	"test should check that the correct start page is loaded" : function(){ 
 		var req = {url:"/"};
 		var res = {};
@@ -27,13 +26,13 @@ TestCase ( "Test for serveStaticIndex" , {
 		serveStaticIndex(req,res);
 		assertEquals(script,fs.readFileSync("/home/student/workspace/Yatzy/Client/index2v2.html", "utf8"));
 		},	
-	});
+	});*/
 
 TestCase ( "Test for socket.on('join1v1')" , {
 	"test should check if all parameters for 1v1 are set correctly" : function(){ 
-		initSocket();
-		io.sockets.clients = [1];
-		socket.emit("1v1");
+		//initSocket();
+		//io.sockets.clients = [1];
+		//socket.emit("1v1");
 		assertEquals(0, socket.würfe);
 		assertEquals(0, socket.zug);
 		assertEquals(19, socket.points.length);
@@ -42,10 +41,9 @@ TestCase ( "Test for socket.on('join1v1')" , {
 		assertEquals(0, socket.points[19]);
 		assertEquals("2v2", socket.room);
 		assertFalse(socket.plays);
-		
 		}
 	});
-
+/*
 TestCase ( "Test for socket.on('join2v2')" , {
 	"test should check if all parameters for 2v2 are set correctly" : function(){ 
 		initSocket();
@@ -167,15 +165,13 @@ TestCase ( "Test for validateSelection2v2')" , {
 		assertEquals(0, socket.würfe);
 		assertEquals(2, socket.zug);
 		
-		/*
-		 * io.sockets.clients('2v2')[i].playerID = 2;
-		 * io.sockets.clients('2v2')[i].teamID = 1;
-		 * socket.teamID = 1;
-		 * validateSelection2v2(5,2);
-			assertEquals(19, points.length);
-			assertEquals(0, socket.würfe);
-			assertEquals(2, socket.zug);
-		 * */
+		io.sockets.clients('2v2')[i].playerID = 2;
+		io.sockets.clients('2v2')[i].teamID = 1;
+		socket.teamID = 1;
+		validateSelection2v2(5,2);
+		assertEquals(19, points.length);
+		assertEquals(0, socket.würfe);
+		assertEquals(2, socket.zug);
 		},
 	});
 
@@ -183,10 +179,8 @@ TestCase ( "Test for gameStart1v1)" , {
 	"test should check function gameStart1v1" : function(){ 
 		initSocket();
 		gameStart1v1();	
-		/*
 		assertTrue(io.sockets.clients('1v1')[0].plays);
 		assertTrue(io.sockets.clients('1v1')[1].plays);
-		 * */
 		},
 	});
 
@@ -194,12 +188,10 @@ TestCase ( "Test for gameStart2v2)" , {
 	"test should check function gameStart2v2" : function(){ 
 		initSocket();
 		gameStart2v2();	
-		/*
 		assertTrue(io.sockets.clients('2v2')[0].plays);
 		assertTrue(io.sockets.clients('2v2')[1].plays);
 		assertTrue(io.sockets.clients('2v2')[2].plays);
 		assertTrue(io.sockets.clients('2v2')[3].plays);
-		 * */
 		},
 	});
 
@@ -244,18 +236,18 @@ TestCase ( "Test for calcTeamPoints)" , {
 		
 		initSocket();
 		socket.teamID = 1;
-		/*io.sockets.clients('2v2')[0].teamID = 1;
-		 *io.sockets.clients('2v2')[1].teamID = 1; 
-		 *io.sockets.clients('2v2')[2].teamID = 2;
-		 *io.sockets.clients('2v2')[3].teamID = 2;
-		 *io.sockets.clients('2v2')[0].points[18] = 130;
-		 *io.sockets.clients('2v2')[1].points[18] = 230;
-		 *io.sockets.clients('2v2')[0].points[18] = 105;
-		 *io.sockets.clients('2v2')[1].points[18] = 255;
-		assertEquals(360, calcTeamPoints());	*/
+		io.sockets.clients('2v2')[0].teamID = 1;
+		io.sockets.clients('2v2')[1].teamID = 1; 
+		io.sockets.clients('2v2')[2].teamID = 2;
+		io.sockets.clients('2v2')[3].teamID = 2;
+		io.sockets.clients('2v2')[0].points[18] = 130;
+		io.sockets.clients('2v2')[1].points[18] = 230;
+		io.sockets.clients('2v2')[0].points[18] = 105;
+		io.sockets.clients('2v2')[1].points[18] = 255;
+		assertEquals(360, calcTeamPoints());	
 		},
 	});
-
+*/
 function initSocket()
 {
 	var socket = io.connect('http://127.0.0.1:8124');
