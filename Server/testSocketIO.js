@@ -1,3 +1,4 @@
+/*
 TestCase ( "Test for serveStaticIndex" , {
 	"test should check that the correct start page is loaded" : function(){ 
 		var req = {url:"/"};
@@ -230,7 +231,7 @@ TestCase ( "Test for checkGame2v2)" , {
 		assertFalse(gameStart2v2());
 		},
 	});
-
+*/
 TestCase ( "Test for calcTeamPoints)" , {
 	"test should check that the sum of ponints of a team is returned" : function(){ 
 		
@@ -250,5 +251,11 @@ TestCase ( "Test for calcTeamPoints)" , {
 
 function initSocket()
 {
+	var dice = require('/home/student/workspace/Yatzy/Server/dice.js');
+	var pointsCheck = require('/home/student/workspace/Yatzy/Server/pointsCheck.js');
+	var app = require('http').createServer(serveStaticIndex).listen(8124);
+	var io = require('socket.io').listen(app).set('log level', 1);
 	var socket = io.connect('http://127.0.0.1:8124');
+	var fs = require('fs');
+	var url = require('url');
 }
